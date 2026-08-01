@@ -1,4 +1,8 @@
-﻿<form class="container mt-5" style="max-width: 450px;">
+﻿@using FirstMVCProject.Dto
+@model UserDto
+
+
+<form class="container mt-5" style="max-width: 450px;" asp-action="CreateUser">
     <div class="card shadow p-4">
         <h3 class="text-center mb-4">Registration</h3>
 
@@ -8,6 +12,7 @@
                    class="form-control"
                    id="username"
                    name="username"
+                   asp-for="Username"
                    placeholder="Enter your username"
                    required>
         </div>
@@ -18,6 +23,7 @@
                    class="form-control"
                    id="email"
                    name="email"
+                   asp-for="Email"
                    placeholder="Enter your email"
                    required>
         </div>
@@ -28,12 +34,15 @@
                    class="form-control"
                    id="password"
                    name="password"
+                   asp-for="Password "
                    placeholder="Enter your password"
                    required>
         </div>
 
-        <button type="submit" class="btn btn-success w-100">
-            Register
-        </button>
+        <input type="submit" class="btn btn-success w-100" value="Register">
+        </input>
     </div>
 </form>
+<a asp-action="Login" class="d-block text-center mt-3">Already have an account? Login</a>
+
+
