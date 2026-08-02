@@ -1,4 +1,7 @@
-﻿
+﻿@using FirstMVCProject.Dto
+
+@model UserDto
+
 @* Totast Notification to display the success message for user created successfully *@
 @if (ViewBag.SuccessMessage != null)
 {
@@ -36,7 +39,7 @@
 
 @* Login Form *@
 
-<form class="container mt-5" style="max-width: 400px;">
+<form class="container mt-5" style="max-width: 400px;" asp-action="Login User">
     <div class="card shadow p-4">
         <h3 class="text-center mb-4">Login</h3>
 
@@ -46,6 +49,7 @@
                    class="form-control"
                    id="email"
                    name="email"
+                   asp-for="Email"
                    placeholder="Enter your email"
                    required>
         </div>
@@ -56,6 +60,7 @@
                    class="form-control"
                    id="password"
                    name="password"
+                   asp-for="Password"
                    placeholder="Enter your password"
                    required>
         </div>
