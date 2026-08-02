@@ -1,6 +1,37 @@
 ﻿@using FirstMVCProject.Dto
 @model UserDto
 
+@* <div>@ViewBag.ErrorMessage</div> *@
+
+
+@* error message to display the user already exists *@
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="errorToast" class="toast text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @ViewBag.ErrorMessage
+                </div>
+                <button type="button"
+                        class="btn-close btn-close-white me-2 m-auto"
+                        data-bs-dismiss="toast"
+                        aria-label="Close">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var toastElement = document.getElementById("errorToast");
+            var toast = new bootstrap.Toast(toastElement, {
+                delay: 3000
+            });
+            toast.show();
+        });
+    </script>
+}
 
 <form class="container mt-5" style="max-width: 450px;" asp-action="CreateUser">
     <div class="card shadow p-4">
