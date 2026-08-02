@@ -20,8 +20,8 @@ namespace FirstMVCProject.Controllers
         }
 
         public async Task<IActionResult> CreateUser(UserDto dto)
-         {
-            if (dto==null || string.IsNullOrEmpty(dto.Email) || string.IsNullOrEmpty(dto.Password) || string.IsNullOrEmpty(dto.Username))
+        {
+            if (dto == null || string.IsNullOrEmpty(dto.Email) || string.IsNullOrEmpty(dto.Password) || string.IsNullOrEmpty(dto.Username))
             {
                 ViewBag.ErrorMessage = "Please fill in all required fields";
                 return View("Register");
@@ -54,5 +54,33 @@ namespace FirstMVCProject.Controllers
 
 
         }
+
+        public async Task<IActionResult> LoginUser(UserDto dto)
+        {
+            var existinguser = await context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+
+            if (existinguser == null)
+            { 
+
+                ViewBag.ErrorMessage = "The user Email does not exist";
+                return View("Login");
+            }
+            else if (existinguser.Password != dto.Password)
+            {
+                ViewBag.ErrorMessage = "The password is incorrect";
+                return View("Login");
+            }
+            else 
+            {
+                TempData["SuccessMessage"] = "User logged in successfully";
+                return RedirectToAction("Index", "DashBoard");
+            }
+
+        }
+
     }
+
+
+
+        
 }

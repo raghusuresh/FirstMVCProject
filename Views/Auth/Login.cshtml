@@ -3,13 +3,17 @@
 @model UserDto
 
 @* Totast Notification to display the success message for user created successfully *@
-@if (ViewBag.SuccessMessage != null)
+@if (ViewBag.SuccessMessage != null || ViewBag.ErrorMessage != null)
 {
+    var isSuccess = ViewBag.SuccessMessage != null;
+    var message = isSuccess ? ViewBag.SuccessMessage : ViewBag.ErrorMessage;
+    var theme = isSuccess ? "text-bg-success" : "text-bg-danger";
+
     <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="successToast" class="toast text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="Toast" class="toast @theme border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
-                    @ViewBag.SuccessMessage
+                    @message
                 </div>
                 <button type="button"
                         class="btn-close btn-close-white me-2 m-auto"
@@ -23,7 +27,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var toastElement = document.getElementById("successToast");
+            var toastElement = document.getElementById("Toast");
 
             var toast = new bootstrap.Toast(toastElement, {
                 delay: 3000,   // Auto close after 3 seconds
@@ -39,7 +43,7 @@
 
 @* Login Form *@
 
-<form class="container mt-5" style="max-width: 400px;" asp-action="Login User">
+<form class="container mt-5" style="max-width: 400px;" asp-action="LoginUser">
     <div class="card shadow p-4">
         <h3 class="text-center mb-4">Login</h3>
 

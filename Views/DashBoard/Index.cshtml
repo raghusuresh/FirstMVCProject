@@ -1,0 +1,40 @@
+﻿@if (ViewBag.SuccessMessage != null || ViewBag.ErrorMessage != null)
+{
+    var isSuccess = ViewBag.SuccessMessage != null;
+    var message = isSuccess ? ViewBag.SuccessMessage : ViewBag.ErrorMessage;
+    var theme = isSuccess ? "text-bg-success" : "text-bg-danger";
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="Toast" class="toast @theme border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @message
+                </div>
+                <button type="button"
+                        class="btn-close btn-close-white me-2 m-auto"
+                        data-bs-dismiss="toast"
+                        aria-label="Close">
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var toastElement = document.getElementById("Toast");
+
+            var toast = new bootstrap.Toast(toastElement, {
+                delay: 3000,   // Auto close after 3 seconds
+                autohide: true
+            });
+
+            toast.show();
+        });
+    </script>
+}
+
+
+
+
+                        hi
