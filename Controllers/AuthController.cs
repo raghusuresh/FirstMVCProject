@@ -57,6 +57,12 @@ namespace FirstMVCProject.Controllers
 
         public async Task<IActionResult> LoginUser(UserDto dto)
         {
+
+            if (dto == null || string.IsNullOrEmpty(dto.Email) || string.IsNullOrEmpty(dto.Password))
+            {
+                ViewBag.ErrorMessage("Kindly fill all the Details.");
+                return View("Login");
+            }
             var existinguser = await context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (existinguser == null)

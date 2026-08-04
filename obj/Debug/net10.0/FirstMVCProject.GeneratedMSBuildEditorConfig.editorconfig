@@ -39,8 +39,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/suresh/projects/.net/FirstMVCProject/FirstMVCProject/Views/DashBoard/EditForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaEJvYXJkXEVkaXRGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/suresh/projects/.net/FirstMVCProject/FirstMVCProject/Views/DashBoard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaEJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/suresh/projects/.net/FirstMVCProject/FirstMVCProject/Views/DashBoard/ProductForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaEJvYXJkXFByb2R1Y3RGb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/suresh/projects/.net/FirstMVCProject/FirstMVCProject/Views/Shared/Error.cshtml]
