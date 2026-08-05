@@ -1,0 +1,136 @@
+﻿@using FirstMVCProject.Dto
+@model List<ProductDto>
+
+@* Message part *@
+@if (ViewBag.SuccessMessage != null || ViewBag.ErrorMessage != null)
+{
+    var isSuccess = ViewBag.SuccessMessage != null;
+    var message = isSuccess ? ViewBag.SuccessMessage : ViewBag.ErrorMessage;
+    var theme = isSuccess ? "text-bg-success" : "text-bg-danger";
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="Toast" class="toast @theme border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @message
+                </div>
+                <button type="button"
+                        class="btn-close btn-close-white me-2 m-auto"
+                        data-bs-dismiss="toast"
+                        aria-label="Close">
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var toastElement = document.getElementById("Toast");
+
+            var toast = new bootstrap.Toast(toastElement, {
+                delay: 3000,   // Auto close after 3 seconds
+                autohide: true
+            });
+
+            toast.show();
+        });
+    </script>
+}
+
+
+
+
+
+@* dashboard *@
+
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Product Dashboard</h2>
+
+        <a asp-action="ProductForm" asp-controller="DashBoard" class="btn btn-success">
+            + Add Product
+        </a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Color</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (Model.Count > 0)
+                    {
+
+
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.ProductName</td>
+                                <td>@product.Description</td>
+                                <td>@product.Price</td>
+                                <td>@product.Color</td>
+                                <td class="text-center">
+                                    <a asp-action="EditForm"
+                                    asp-route-productid="@product.Id"
+                                    class="btn btn-primary btn-sm me-2">
+                                        Edit
+                                    </a>
+
+                                    <a asp-action="DeleteProduct"
+                                    asp-route-productid="@product.Id"
+                                    class="btn btn-danger btn-sm">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center">No products available.</td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        

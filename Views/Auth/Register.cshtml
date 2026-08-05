@@ -1,4 +1,39 @@
-﻿<form class="container mt-5" style="max-width: 450px;">
+﻿@using FirstMVCProject.Dto
+@model UserDto
+
+@* <div>@ViewBag.ErrorMessage</div> *@
+
+
+@* error message to display the user already exists *@
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="errorToast" class="toast text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @ViewBag.ErrorMessage
+                </div>
+                <button type="button"
+                        class="btn-close btn-close-white me-2 m-auto"
+                        data-bs-dismiss="toast"
+                        aria-label="Close">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var toastElement = document.getElementById("errorToast");
+            var toast = new bootstrap.Toast(toastElement, {
+                delay: 3000
+            });
+            toast.show();
+        });
+    </script>
+}
+
+<form class="container mt-5" style="max-width: 450px;" asp-action="CreateUser">
     <div class="card shadow p-4">
         <h3 class="text-center mb-4">Registration</h3>
 
@@ -8,6 +43,7 @@
                    class="form-control"
                    id="username"
                    name="username"
+                   asp-for="Username"
                    placeholder="Enter your username"
                    required>
         </div>
@@ -18,6 +54,7 @@
                    class="form-control"
                    id="email"
                    name="email"
+                   asp-for="Email"
                    placeholder="Enter your email"
                    required>
         </div>
@@ -28,12 +65,15 @@
                    class="form-control"
                    id="password"
                    name="password"
+                   asp-for="Password "
                    placeholder="Enter your password"
                    required>
         </div>
 
-        <button type="submit" class="btn btn-success w-100">
-            Register
-        </button>
+        <input type="submit" class="btn btn-success w-100" value="Register">
+        </input>
     </div>
 </form>
+<a asp-action="Login" class="d-block text-center mt-3">Already have an account? Login</a>
+
+

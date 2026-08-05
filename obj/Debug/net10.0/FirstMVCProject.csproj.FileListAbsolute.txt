@@ -161,7 +161,6 @@ C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\bin\Debug\net10.0\runtim
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\FirstMVCProject.csproj.AssemblyReference.cache
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\FirstMVC.03338DF8.Up2Date
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\FirstMVCProject.sourcelink.json
-C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\compressed\7gue04ug5s-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\compressed\917t3ygeuf-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\compressed\uc4bh7x1bb-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
@@ -224,3 +223,5 @@ C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\compre
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\compressed\6lod908a0m-{0}-muycvpuwrr-muycvpuwrr.gz
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\compressed\1dsqz79pim-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\compressed\54k7neg8k1-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\suresh\projects\.net\FirstMVCProject\FirstMVCProject\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
