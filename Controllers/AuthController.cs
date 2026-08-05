@@ -3,6 +3,10 @@ using FirstMVCProject.Dto;
 using FirstMVCProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace FirstMVCProject.Controllers
 {
@@ -66,7 +70,7 @@ namespace FirstMVCProject.Controllers
             var existinguser = await context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (existinguser == null)
-            { 
+            {
 
                 ViewBag.ErrorMessage = "The user Email does not exist";
                 return View("Login");
@@ -76,11 +80,47 @@ namespace FirstMVCProject.Controllers
                 ViewBag.ErrorMessage = "The password is incorrect";
                 return View("Login");
             }
-            else 
+            else
             {
+                var token = GenerateJWTToken(dto);
+
+                Response.Cookies.Append("jwt_key", token, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict,
+                    Expires = DateTime.UtcNow.AddMinutes(30)
+                });
+
                 TempData["SuccessMessage"] = "User logged in successfully";
                 return RedirectToAction("Index", "DashBoard");
             }
+
+        }
+
+        private string GenerateJWTToken(UserDto dto)
+        {
+            var jwthandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes("jY83FQqjIyjdfyyLcMGjQsCYIIjxNaMsHzoVz0auFyp");
+
+            var TokenDescriptor = new Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor
+            {
+                Subject = new System.Security.Claims.ClaimsIdentity(new[] {
+                    new Claim(ClaimTypes.Name, dto.Email), }),
+                Expires = DateTime.UtcNow.AddMinutes(30),
+                SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new SymmetricSecurityKey(key), Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = jwthandler.CreateToken(TokenDescriptor);
+            return jwthandler.WriteToken(token);
+        }
+
+
+
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("jwt_key");
+            TempData["SuccessMessage"] = "User logged out successfully";
+            return RedirectToAction("Login");
 
         }
 
@@ -88,5 +128,4 @@ namespace FirstMVCProject.Controllers
 
 
 
-        
-}
+    }

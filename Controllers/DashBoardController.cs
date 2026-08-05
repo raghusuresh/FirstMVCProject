@@ -1,6 +1,7 @@
 ﻿using FirstMVCProject.Data;
 using FirstMVCProject.Dto;
 using FirstMVCProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace FirstMVCProject.Controllers
 {
     public class DashBoardController(AppDbContext context) : Controller
     {
+        [Authorize]
         public IActionResult Index()
         {
             ViewBag.SuccessMessage = TempData["SuccessMessage"];
